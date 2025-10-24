@@ -1,6 +1,320 @@
+:root {
+    --bg: #9cb3ff;
+    --panel: #ffffff;
+    --ink: #1f2328;
+    --muted: #6b7280;
+    --accent: #3b82f6;
+    --accent-weak: #dbeafe;
+    --ok: #16a34a;
+    --ok-weak: #dcfce7;
+    --bord: #e5e7eb;
+    --card-w: min(720px, 92vw);
+    --card-min-h: 160px;
+    --radius: 16px;
+    --gap: 16px;
+    --shadow: 0 6px 24px rgba(2, 6, 23, 0.06);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+}
+
 body {
     margin: 0;
-    padding: 0;
+    font-family: "Nunito", Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--ink);
+    background-color: var(--bg);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 
-    background: #292929;
+.bg-svg {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    width: 100vw;
+    height: 100vh;
+    display: block;
+    pointer-events: none;
+}
+
+.bg-svg .p {
+    transform-box: fill-box;
+    opacity: 0.85;
+}
+
+.bg-svg .p1 {
+    transform: rotate(55deg);
+}
+
+.bg-svg .p2 {
+    transform: rotate(-18deg);
+}
+
+.bg-svg .p3 {
+    transform: rotate(33deg);
+}
+
+.bg-svg .p4 {
+    transform: rotate(-7deg);
+}
+
+.bg-svg .p5 {
+    transform: rotate(22deg);
+}
+
+.bg-svg .p6 {
+    transform: rotate(-28deg);
+}
+
+.bg-svg .p7 {
+    transform: rotate(15deg);
+}
+
+.bg-svg .p8 {
+    transform: rotate(-4deg);
+}
+
+/* ---------- Визуально скрытое ---------- */
+.visually-hidden {
+    position: absolute !important;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
+    padding: 0;
+    margin: -1px;
+}
+
+/* ---------- Контейнер страницы и квиза ---------- */
+.page {
+    min-height: 100%;
+    display: grid;
+    place-items: start center;
+    padding: 40px 16px 80px;
+}
+
+.quiz {
+    width: var(--card-w);
+    display: grid;
+    gap: calc(var(--gap) * 1.25);
+}
+
+.quiz:has(#reveal:checked) .option label.correct {
+    background: var(--ok-weak);
+    border-radius: 8px;
+    padding: 2px 4px;
+}
+
+.quiz:has(#reveal:checked) .option label.correct::after {
+    content: " ← верно";
+    font-weight: 600;
+    color: var(--ok);
+    margin-left: 6px;
+}
+
+.quiz__header {
+    background: var(--panel);
+    border: 1px solid var(--bord);
+    border-radius: var(--radius);
+    padding: 20px;
+    box-shadow: var(--shadow);
+}
+
+.quiz__header h1 {
+    margin: 0 0 8px;
+    font-size: 28px;
+    letter-spacing: -0.02em;
+}
+
+.quiz__intro {
+    margin: 0 0 12px;
+    color: var(--muted);
+}
+
+/* ---------- Карточки вопросов ---------- */
+.card {
+    background: var(--panel);
+    border: 1px solid var(--bord);
+    border-radius: var(--radius);
+    padding: 20px;
+    min-height: var(--card-min-h);
+    width: var(--card-w);
+    margin-inline: auto;
+    box-shadow: var(--shadow);
+}
+
+.card__title {
+    margin: 0 0 12px;
+    font-size: 20px;
+    line-height: 1.35;
+}
+
+/* ---------- Варианты ответов ---------- */
+.options {
+    display: grid;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+.option {
+    position: relative;
+    display: grid;
+    grid-template-columns: 24px 1fr;
+    gap: 10px;
+    align-items: center;
+    padding: 10px 12px;
+    border: 1px solid var(--bord);
+    border-radius: 12px;
+    transition: background .15s ease, border-color .15s ease, box-shadow .15s ease;
+}
+
+.option input {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--accent);
+    margin: 0 2px;
+}
+
+.option label {
+    cursor: pointer;
+}
+
+.option:hover {
+    background: var(--accent-weak);
+}
+
+.option:active {
+    filter: brightness(0.95);
+}
+
+.option:has(input:focus-visible) {
+    outline: 3px solid var(--accent-weak);
+    outline-offset: 2px;
+}
+
+/* ---------- Объяснения ---------- */
+.explain {
+    display: none;
+    margin: 10px 2px 0;
+    padding: 10px 12px;
+    border-left: 4px solid var(--accent);
+    background: var(--accent-weak);
+    border-radius: 8px;
+    color: var(--ink);
+    font-size: 14px;
+}
+
+/* ---------- Подвал формы ---------- */
+.quiz__footer {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.btn {
+    appearance: none;
+    border: 1px solid #cbd5e1;
+    background: #f8fafc;
+    padding: 10px 16px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background .15s ease, border-color .15s ease, transform .02s ease;
+    font-weight: 600;
+}
+
+.btn:hover {
+    background: #eef2f7;
+}
+
+.btn:active {
+    transform: translateY(1px);
+}
+
+form:valid .btn.btn-primary {
+    opacity: 1;
+    pointer-events: auto;
+    cursor: pointer;
+}
+
+.quiz__note {
+    margin: 0;
+    color: var(--muted);
+    font-size: 14px;
+}
+
+.btn.btn-primary {
+    opacity: .5;
+    pointer-events: none;
+    cursor: not-allowed;
+    transition: opacity .2s ease;
+    background: var(--accent);
+    color: white;
+    border-color: var(--accent);
+}
+
+.btn.btn-primary:hover {
+    filter: brightness(1.05);
+}
+
+/* анимация "дыхания" */
+@keyframes pulse-glow {
+    0% {
+        box-shadow: 0 0 6px rgba(60, 255, 235, 0.484);
+    }
+
+    50% {
+        box-shadow: 0 0 14px rgb(60, 255, 235);
+    }
+
+    100% {
+        box-shadow: 0 0 6px rgba(60, 255, 235, 0.4);
+    }
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    animation: pulse-glow 2.8s ease-in-out infinite;
+}
+
+.btn :active {
+    transform: translateY(0);
+    animation: none;
+    filter: brightness(0.9);
+}
+
+.btn.btn-primary:active {
+    transform: translateY(0);
+    animation: none;
+    filter: brightness(0.9);
+}
+
+.when-on {
+    display: none;
+}
+
+.reveal-toggle:checked+label .when-off {
+    display: none;
+}
+
+.reveal-toggle:checked+label .when-on {
+    display: inline;
+}
+
+@media (max-width: 560px) {
+    .card__title {
+        font-size: 18px;
+    }
 }
