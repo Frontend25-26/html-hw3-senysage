@@ -1,14 +1,241 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style.css">
-    <title>HW3</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Квиз</title>
+
+    <link rel="stylesheet" href="style.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
+
 <body>
-    <div id="app">
-        
-    </div>
+    <svg class="bg-svg" aria-hidden="true" focusable="false">
+        <defs>
+            <pattern id="petals" x="0" y="0" width="360" height="360" patternUnits="userSpaceOnUse">
+                <image class="p p1" href="images/flower1-svgrepo-com.svg" x="24" y="32" width="28" height="28" />
+                <image class="p p2" href="images/flower1-svgrepo-com.svg" x="180" y="18" width="40" height="40" />
+                <image class="p p3" href="images/flower1-svgrepo-com.svg" x="300" y="40" width="22" height="22" />
+                <image class="p p4" href="images/flower1-svgrepo-com.svg" x="88" y="120" width="36" height="36" />
+                <image class="p p5" href="images/flower1-svgrepo-com.svg" x="250" y="140" width="28" height="28" />
+                <image class="p p6" href="images/flower1-svgrepo-com.svg" x="40" y="220" width="44" height="44" />
+                <image class="p p7" href="images/flower1-svgrepo-com.svg" x="200" y="260" width="26" height="26" />
+                <image class="p p8" href="images/flower1-svgrepo-com.svg" x="316" y="300" width="34" height="34" />
+            </pattern>
+        </defs>
+
+        <rect width="100%" height="100%" fill="url(#petals)" />
+    </svg>
+
+    <main class="page">
+        <form class="quiz" aria-labelledby="quiz-title">
+            <header class="quiz__header">
+                <h1 id="quiz-title">Квиз по HTML/CSS</h1>
+                <p class="quiz__intro">
+                    Выбери ответы для каждого вопроса. Правильность подсветится сразу после выбора.
+                    Можешь раскрыть объяснения с помощью переключателя ниже.
+                </p>
+            </header>
+
+            <!-- Q1 (radio) -->
+            <section class="card" role="group" aria-labelledby="q1-title">
+                <h2 id="q1-title" class="card__title">1) Какой тег семантически обозначает основной контент страницы?
+                </h2>
+                <fieldset class="options">
+                    <legend class="visually-hidden">Выбери один вариант</legend>
+
+                    <div class="option">
+                        <input id="q1-a" name="q1" type="radio" />
+                        <label for="q1-a">&lt;div&gt;</label>
+                    </div>
+
+                    <div class="option">
+                        <input id="q1-b" name="q1" type="radio" />
+                        <label for="q1-b" class="correct">&lt;main&gt;</label>
+                    </div>
+
+                    <div class="option">
+                        <input id="q1-c" name="q1" type="radio" />
+                        <label for="q1-c">&lt;section&gt;</label>
+                    </div>
+
+                    <p class="explain">
+                        Правильный ответ: <code>&lt;main&gt;</code> — он содержит уникальный основной контент документа.
+                    </p>
+                </fieldset>
+            </section>
+
+            <!-- Q2 (radio) -->
+            <section class="card" role="group" aria-labelledby="q2-title">
+                <h2 id="q2-title" class="card__title">2) Что делает атрибут <code>lang</code>?
+                </h2>
+                <fieldset class="options">
+                    <legend class="visually-hidden">Выбери один вариант</legend>
+
+                    <div class="option">
+                        <input id="q2-a" name="q2" type="radio" />
+                        <label for="q2-a">Меняет язык страницы</label>
+                    </div>
+
+                    <div class="option">
+                        <input id="q2-b" name="q2" type="radio" />
+                        <label for="q2-b" class="correct">Помогает ассистивным технологиям и поиску понимать язык
+                            контента</label>
+                    </div>
+
+                    <div class="option">
+                        <input id="q2-c" name="q2" type="radio" />
+                        <label for="q2-c">Подключает локальные шрифты</label>
+                    </div>
+
+                    <p class="explain">
+                        Правильный ответ: указывает язык документа для скринридеров, переводчиков и поисковых систем.
+                    </p>
+                </fieldset>
+            </section>
+
+            <!-- Q3 (checkbox) -->
+            <section class="card" role="group" aria-labelledby="q3-title">
+                <h2 id="q3-title" class="card__title">3) Какие единицы измерения в CSS относительные?</h2>
+                <fieldset class="options">
+                    <legend class="visually-hidden">Выбери все подходящие</legend>
+
+                    <div class="option">
+                        <input id="q3-a" name="q3" type="checkbox" />
+                        <label for="q3-a" class="correct">em</label>
+                    </div>
+                    <div class="option">
+                        <input id="q3-b" name="q3" type="checkbox" />
+                        <label for="q3-b" class="correct">rem</label>
+                    </div>
+                    <div class="option">
+                        <input id="q3-c" name="q3" type="checkbox" />
+                        <label for="q3-c">px</label>
+                    </div>
+                    <div class="option">
+                        <input id="q3-d" name="q3" type="checkbox" />
+                        <label for="q3-d" class="correct">%</label>
+                    </div>
+                    <div class="option">
+                        <input id="q3-e" name="q3" type="checkbox" />
+                        <label for="q3-e" class="correct">vh / vw</label>
+                    </div>
+
+                    <p class="explain">
+                        Относительные единицы подстраиваются под шрифт, окно или родителя: <code>em</code>,
+                        <code>rem</code>, <code>%</code>, <code>vh</code>, <code>vw</code>.
+                    </p>
+                </fieldset>
+            </section>
+
+            <!-- Q4 (radio) -->
+            <section class="card" role="group" aria-labelledby="q4-title">
+                <h2 id="q4-title" class="card__title">4) Переменные, определённые в этом псевдоклассе, являются
+                    глобальными
+                </h2>
+                <fieldset class="options">
+                    <legend class="visually-hidden">Выбери один вариант</legend>
+
+                    <div class="option">
+                        <input id="q4-a" name="q4" type="radio" />
+                        <label for="q4-a">:media</label>
+                    </div>
+
+                    <div class="option">
+                        <input id="q4-b" name="q4" type="radio" />
+                        <label for="q4-b" class="correct">:root</label>
+                    </div>
+
+                    <div class="option">
+                        <input id="q4-c" name="q4" type="radio" />
+                        <label for="q4-c">:import</label>
+                    </div>
+
+                    <p class="explain">
+                        :root — псевдокласс, который выбирает корневой элемент документа.
+                        <code>margin-inline:auto</code>.
+                    </p>
+                </fieldset>
+            </section>
+
+            <!-- Q5 (checkbox) -->
+            <section class="card" role="group" aria-labelledby="q5-title">
+                <h2 id="q5-title" class="card__title">5) Что из этого относится к доступности (a11y)? (несколько
+                    вариантов)</h2>
+                <fieldset class="options">
+                    <legend class="visually-hidden">Выбери все подходящие</legend>
+
+                    <div class="option">
+                        <input id="q5-a" type="checkbox" />
+                        <label for="q5-a" class="correct">Контраст текста и фона соответствует WCAG</label>
+                    </div>
+
+                    <div class="option">
+                        <input id="q5-b" type="checkbox" />
+                        <label for="q5-b" class="correct">Правильные подписи для &lt;input&gt; через &lt;label&gt; или
+                                    aria-атрибуты</label>
+                    </div>
+
+                    <div class="option">
+                        <input id="q5-c" type="checkbox" />
+                        <label for="q5-c">Использование только пиксельных единиц</label>
+                    </div>
+
+                    <div class="option">
+                        <input id="q5-d" type="checkbox" />
+                        <label for="q5-d" class="correct">Фокусируемость и видимый outline у интерактивных
+                            элементов</label>
+                    </div>
+
+                    <p class="explain">
+                        Контраст, подписи к полям и видимый фокус — базовые требования доступности.
+                    </p>
+                </fieldset>
+            </section>
+
+            <!-- Q6 (radio) -->
+            <section class="card" role="group" aria-labelledby="q6-title">
+                <h2 id="q6-title" class="card__title">6) Как задать единый внешний вид для набора карточек на странице?
+                </h2>
+                <fieldset class="options">
+                    <legend class="visually-hidden">Выбери один вариант</legend>
+
+                    <div class="option">
+                        <input id="q6-a" name="q6" type="radio" />
+                        <label for="q6-a">Прописать инлайн-стили на каждом элементе</label>
+                    </div>
+
+                    <div class="option">
+                        <input id="q6-b" name="q6" type="radio" />
+                        <label for="q6-b" class="correct">Создать общий класс (например, <code>.card</code>) и
+                            переиспользовать</label>
+                    </div>
+
+                    <div class="option">
+                        <input id="q6-c" name="q6" type="radio" />
+                        <label for="q6-c">Дублировать одинаковые правила в нескольких селекторах</label>
+                    </div>
+
+                    <p class="explain">
+                        Переиспользование: общий класс с размерами, паддингами, границами и т.д.
+                    </p>
+                </fieldset>
+            </section>
+
+            <footer class="quiz__footer">
+                <input type="checkbox" id="reveal" class="reveal-toggle" hidden>
+                <label for="reveal" class="btn btn-primary">
+                    <span class="when-off">Показать верные ответы</span>
+                    <span class="when-on">Скрыть ответы</span>
+                </label>
+                <button type="reset" class="btn">Сбросить ответы</button>
+            </footer>
+        </form>
+    </main>
 </body>
+
 </html>
